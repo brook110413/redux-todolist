@@ -12,38 +12,9 @@ const store = createStore(
 );
 
 const App = () => {
-  // const [todos, setTodos] = useState([
-  //   {
-  //     id: 0,
-  //     text: '吃早餐',
-  //   },
-  //   {
-  //     id: 1,
-  //     text: '上學',
-  //   },
-  //   {
-  //     id: 2,
-  //     text: '吃午餐',
-  //   },
-  // ]);
-
-  // const [id, setId] = useState(3);
-
-  // const createTodo = (text) => {
-  //   setTodos([...todos, { id, text }]);
-  //   setId(id + 1);
-  // };
-
-  // const removeTodo = (id) => {
-  //   setTodos(todos.filter((todo) => id !== todo.id));
-  // };
-
   return (
     <Provider store={store}>
       <div>
-        {/* <Title todos={todos} />
-        <Form createTodo={(text) => createTodo(text)} />
-        <List todos={todos} removeTodo={(id) => removeTodo(id)} /> */}
         <Title />
         <Form />
         <List />
