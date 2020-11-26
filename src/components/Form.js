@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { createTodo } from '../actions';
-import { connect } from 'react-redux';
 
-const Form = ({ createTodo }) => {
+const Form = () => {
   const [text, setText] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -19,7 +21,7 @@ const Form = ({ createTodo }) => {
     if (!text) {
       return;
     }
-    createTodo(text);
+    dispatch(createTodo(text));
     setText('');
   };
 
@@ -36,12 +38,4 @@ const Form = ({ createTodo }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    createTodo: (text) => {
-      dispatch(createTodo(text));
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Form);
+export default Form;

@@ -1,7 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const Title = ({ todos }) => {
+const Title = () => {
+  const todos = useSelector((state) => state.todos);
+
   return (
     <div>
       <h2>代辦事項清單({todos.length})</h2>
@@ -9,10 +11,4 @@ const Title = ({ todos }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos,
-  };
-};
-
-export default connect(mapStateToProps)(Title);
+export default Title;

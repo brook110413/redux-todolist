@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeTodo } from '../actions';
 
-const List = ({ todos, removeTodo }) => {
+const List = () => {
+  const todos = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -11,7 +14,7 @@ const List = ({ todos, removeTodo }) => {
     <div>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id} onClick={() => removeTodo(todo.id)}>
+          <li key={todo.id} onClick={() => dispatch(removeTodo(todo.id))}>
             {todo.text}
           </li>
         ))}
@@ -20,18 +23,4 @@ const List = ({ todos, removeTodo }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state.todos,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    removeTodo: (id) => {
-      dispatch(removeTodo(id));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default List;
